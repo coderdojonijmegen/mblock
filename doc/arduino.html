@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>Arduino</title>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://coderdojonijmegen.github.io/instructies_voor_mentoren/style.css">
+<script src="./arduino_files/jquery.min.js.download"></script>
+<script>
+$(document).ready(function(){
+    $('button').click(function(){
+        $('#span'+this.id).text(($('#div'+this.id).is(':visible') ? 'Laat de mBlock code zien' : 'Verberg de mBlock code'));
+        $('#div'+this.id).toggle(250);
+    });
+});
+
+</script>
+</head>
+<body>
+	<div class="content">
+
+		<h1>Instructies Arduino</h1>
+		<a href="index.html">&lt; terug naar overzicht</a>
+		<div id="inhoud">
+			<h2>Inhoud</h2>
+			<ul class="inhoud">
+				<li><a href="#introductie">Introductie</a></li>
+				<li><a href="onderdelen">De onderdelen</a></li>
+				<li><a href="#opdrachten">Opdrachten</a></li>
+				<li><a href="#uitdagingen">Uitdagingen</a></li>
+				<li><a href="#bronnen">Bronnen</a></li>
+			</ul>
+		</div>
+
+		<div id="introductie">
+			<div class="terug">
+				<a title="terug naar inhoud" href="#inhoud">^</a>
+			</div>
+			<h2>Introductie</h2>
+		        Sluit de Arduino pas aan op de computer met de USB kabel nadat je een circuit hebt gebouwd. 
+		        Haal de kabel er weer uit voor je iets verandert aan het circuit.
+		</div>
+
+		<div id="onderdelen">
+			<div class="terug">
+				<a title="terug naar inhoud" href="#inhoud">^</a>
+			</div>
+			<h2>De onderdelen</h2>
+		    <p>De <b><i>Arduino Uno</i></b> heeft een aantal verschillende aansluitingen: de voeding (plus en aarde), digitale in- en uitgangen, en analoge in-en uitgangen.</p>
+		    <img src="./arduino_files/arduino_uno_schema.jpg">
+		    <ul>
+		        <li>Met de voeding kun je het circuit dat je hebt gebouwd van stroom voorzien.</li>
+		        <li>Met de digitale in- en uitgangen kun je <b><i>aan</i></b> en <b><i>uit</i></b> opdrachten geven, bijvoorbeeld of een LED aan of uit moet staan. Dit zijn aansluitingen 2 t/m 13</li>
+		        <li>Met de analoge ingangen kun je de waarden van bijvoorbeeld licht- of temperatuursensoren meten (die zijn niet beperkt tot 0 (uit) of 1 (aan). Dit zijn aansluitingen A0 t/m A5.</li>
+		        <li>Met de analoge uitgangen (dit zijn de digitale aansluitingen die gemerkt zijn met een <b><i>~</i></b>) kun je bijvoorbeeld een LED harder of zachter laten branden.</li>
+		    </ul>
+		    Je kunt een circuit bouwen op een zogenaamd <b><i>breadboard</i></b>. Deze zijn er in allerlei soorten en maten. Op dit schema kun je zien welke gaatjes (elektrisch) met elkaar verbonden zijn.
+		    <br><br><img src="./arduino_files/breadboard_verbindingen.png">
+		</div>
+
+		<div id="opdrachten">
+			<div class="terug">
+				<a title="terug naar inhoud" href="#inhoud">^</a>
+			</div>
+			<h2>Opdrachten</h2>
+		    <h3>Code uploaden naar de Arduino</h3>
+		    Als je een stuk code hebt gemaakt in mBlock, klik je met de rechtermuisknop op het <b><i>Arduino programma</i></b>.
+		    <br><img src="./arduino_files/Arduino_upload01.png"><br>
+		    De code die naar de Arduino geupload moet worden komt tevoorschijn. Klik nu op <b><i>Upload naar Arduino</i></b>.
+		    <br><img src="./arduino_files/Arduino_upload02.png">
+		
+		
+		    <h3>Voorbeeldopdracht 1: knipperende LED</h3>
+		    <ol>
+		    <li>Maak het volgende circuit (met behulp van een breadboard).
+		    <br><img src="./arduino_files/Arduino_LEDknipper_circuit.png" height="50%"></li>
+		    <li>Schakel nu de LED in door de juiste output op <b><i>HOOG</i></b> te zetten.
+		    <button id="1a"><span id="span1a">Laat de mBlock code zien</span></button><br>
+		    <div id="div1a" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Arduino_LEDknipper01.png">
+		    </div></li>
+		    <li>Nu wil je dat de LED daarna ook weer uit gaat.
+		    <button id="1b"><span id="span1b">Laat de mBlock code zien</span></button><br>
+		    <div id="div1b" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Arduino_LEDknipper02.png">
+		    </div></li>
+		    <li>Er zit geen tijd tussen het aan- en uitgaan!
+		    <button id="1c"><span id="span1c">Laat de mBlock code zien</span></button><br>
+		    <div id="div1c" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Arduino_LEDknipper03.png">
+		    </div></li>
+		    <li>Nu wil je dit blijven herhalen.
+		    <button id="1d"><span id="span1d">Laat de mBlock code zien</span></button><br>
+		    <div id="div1d" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Arduino_LEDknipper04.png">
+		    </div></li>
+		    </ol>
+		    <h3>Voorbeeldopdracht 2: metronoom (Grove kit)</h3>
+		    <ol>
+		    <li>Sluit het LCD scherm, de variabele weerstand en de buzzer aan op de juiste poorten.</li>
+		    <li>Laat de buzzer elke seconde (of zoiets) een geluidje maken.
+		    <button id="2a"><span id="span2a">Laat de mBlock code zien</span></button><br>
+		    <div id="div2a" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Grove_metronoom01.png">
+		    </div></li>
+		    <li>Lees de waarde van de variabele weerstand af om deze vervolgens te kunnen vertalen naar een snelheid voor de metronoom.
+		    <button id="2b"><span id="span2b">Laat de mBlock code zien</span></button><br>
+		    <div id="div2b" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Grove_metronoom02.png">
+		    </div></li>
+		    <li>Combineer nu de buzzer en variabele weerstand!
+		    <button id="2c"><span id="span2c">Laat de mBlock code zien</span></button><br>
+		    <div id="div2c" class="div_code" style="display: none;">
+		    <img src="./arduino_files/Grove_metronoom03.png">
+		    </div></li>
+		    </ol>
+		</div>
+
+		<div id="uitdagingen">
+			<div class="terug">
+				<a title="terug naar inhoud" href="#inhoud">^</a>
+			</div>
+			<h2>Uitdagingen</h2>
+	        <ul>
+	            <li>Stoplicht met schakelaar</li>
+	            <li>Lichtkrant (Grove, met LCD schermpje)</li>
+	            <li>Licht- of donkerwijzer (met servo motor)</li>
+	            <li>Thermometer (met temperatuursensor)</li>
+	        </ul>
+		</div>
+
+		<div id="bronnen">
+			<div class="terug">
+				<a title="terug naar inhoud" href="#inhoud">^</a>
+			</div>
+			<h2>Bronnen</h2>
+	        <ul>
+	            <li><a target="_blank" href="https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay">https://www.arduino.cc/en/Tutorial/BlinkWithoutDelay</a></li>
+	            <li>Project: <a target="_blank" href="http://www.makeuseof.com/tag/arduino-traffic-light-controller">http://www.makeuseof.com/tag/arduino-traffic-light-controller</a>/</li>
+	            <li>Schakelaar: <a target="_blank" href="http://oscarromero-arduino.weebly.com/pull-down-weerstand.html">http://oscarromero-arduino.weebly.com/pull-down-weerstand.html</a></li>
+	            <li><a target="_blank" href="https://github.com/josejuansanchez/37-in-1-arduino-sensor-kit/tree/master/001">https://github.com/josejuansanchez/37-in-1-arduino-sensor-kit/tree/master/001</a></li>
+	            <li><a target="_blank" href="https://github.com/Seeed-Studio/Sketchbook_Starter_Kit_for_Arduino">https://github.com/Seeed-Studio/Sketchbook_Starter_Kit_for_Arduino</a></li>
+	            <li><a target="_blank" href="http://wiki.seeed.cc/Grove_Starter_kit_for_Arduino_101">http://wiki.seeed.cc/Grove_Starter_kit_for_Arduino_101</a>/</li>
+	            <li><a href="http://oscarromero-arduino.weebly.com/les-1-breadboard.html">Breadboard</a></li>
+	            <li><a href="https://sites.google.com/site/arduinodojo/voor-coaches">Elementen</a></li>
+	        </ul>
+		</div>
+
+	</div>
+	<div class="footer">
+		<div class="nijmegen">
+			<a href="https://coderdojo-nijmegen.nl"><img
+				src="https://coderdojo-nijmegen.nl/wp-content/uploads/2014/12/logo_coderdojo_nijmegen-e1419242204527.png" /></a>
+		</div>
+		<div class="github">
+			<a
+				href="https://coderdojonijmegen.github.io/instructies_voor_mentoren/">
+				<svg aria-hidden="true" class="octicon octicon-mark-github"
+					height="24" version="1.1" viewBox="0 0 16 16" width="24">
+					<path fill-rule="evenodd"
+						d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+			</a>
+		</div>
+		<a rel="license"
+			href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+			alt="Creative Commons License" style="border-width: 0"
+			src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />Dit
+		werk is gelicenseerd met een <a rel="license"
+			href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+			Commons Attribution-NonCommercial-ShareAlike 4.0 International
+			License</a>.
+	</div>
+	</div>
+</body>
+</html>
