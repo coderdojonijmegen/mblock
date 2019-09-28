@@ -4,16 +4,6 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://coderdojonijmegen.github.io/instructies_voor_mentoren/style.css">
-<script src="./mbot_files/jquery.min.js.download"></script>
-<script>
-$(document).ready(function(){
-    $('button').click(function(){
-        $('#span'+this.id).text(($('#div'+this.id).is(':visible') ? 'Laat de mBlock code zien' : 'Verberg de mBlock code'));
-        $('#div'+this.id).toggle(250);
-    });
-});
-
-</script>
 </head>
 <body>
 	<div class="content">
@@ -38,10 +28,16 @@ $(document).ready(function(){
 			<h2>Introductie</h2>
 		    <ul>
 		        <li>Voor je de mBot aanzet: <b>de mBot eerst op de grond zetten of op de kop leggen!</b></li>
-		        <li>Hou rekening met de beperkte ruimte: zet de snelheid van de motoren niet hoger dan 150.</li>
-		        <li>Goed om te weten: een deel van de functies van mBlock (Beweging, Uiterlijk, Geluid, Pen) is om de M-Panda te besturen, niet de mBot zelf.</li>
-		        <li>Je kunt de taal van mBlock op Nederlands zetten via het menu <i><b>Taal</b></i>.</li>
-		    </ul>
+				<li>Hou rekening met de beperkte ruimte: laat het vermogen van de wielen eerst gewoon op 50% staan.</li>
+				<img src="./mbot_files/mblock5-layout.png" style="vertical-align:middle;margin:10px 50px">
+		        <li>Ook handig om te weten:
+				<ol>
+					<li>(1) Je kunt de taal instellen via de wereldbol. De volgende instructies gaan uit van Nederlandse blokken.</li>
+					<li>(2) Je vindt de mBot bij <i>Apparaten</i>; bij <i>Sprites</i> staan de afbeeldingen die je op het scherm ziet (in het voorbeeld dus de panda).</li>
+					<li>(3) Net als bij Scratch staan de blokken per soort bij elkaar. Neem even de tijd om te kijken wat voor blokken er in de verschillende menu's staan. Waar vind je bijvoorbeeld de <i>als... dan...</i> blokken?</li>
+					<li>(4) Je kunt de mBot <i>live</i> programmeren terwijl deze met de computer verbonden is, of programma's <i>uploaden</i>> naar het geheugen van de mBot. De <i>live</i> manier is makkelijk als je aan het uitproberen bent hoe dingen werken, na <i>uploaden</i> kun je de mBot loskoppelen van de computer.</li></li>
+				</ol>
+			</ul>
 		</div>
 
 		<div id="verbinden">
@@ -49,17 +45,14 @@ $(document).ready(function(){
 				<a title="terug naar inhoud" href="#inhoud"><i class="material-icons">arrow_upward</i></a>
 			</div>
 			<h2>De mBot met de computer verbinden</h2>
-		    De mBot kan op verschillende manieren communiceren met de computer. Bij deze Dojo gebruiken we een USB WiFi dongle. De dongle zorgt voor een rechtstreekse verbinding met de mBot, je laptop heeft verder geen internet nodig.
-		    Stappen:
 		    <ol>
-		        <li>Start mBlock</li>
-		        <li>Kijk bij menu <i><b>Boards</b></i> of de optie <i><b>mBot (mCore)</b></i>is aangevinkt.</li>
-		        <li>Ga naar het tabblad <i><b>Robots</b></i>.</li>
-		        <li>Kies in het menu <i><b>Verbinden</b></i> voor <b><i>2.4 Ghz Serieel</i></b>, en vervolgens verbinden.</li>
-		        <li>Het rode lampje zou nu groen moeten worden. <img src="./mbot_files/mBlock_verbinden.gif" style="vertical-align:middle;margin:10px 50px"></li>
-		        <li>Je kunt controleren of er verbinding is door te dubbelklikken op dit element: <img src="./mbot_files/mBot_speelnoot.jpg" style="vertical-align:middle;margin:10px 25px"></li>
-		        <li>Je bent nu klaar om de mBot te gaan programmeren!</li>
-		    </ol>
+		        <li>Start mBlock.</li>
+		        <li>Sluit de mBot aan met de USB-kabel en zet de robot aan.</li>
+		        <li>Verwijder bij het tabblad <i>Apparaten</i> eventuele andere robots, klik op toevoegen en kies dan de mBot.</li>
+		        <li>Klik nu op verbinden, begin met de <i>Live</i> stand.</li>
+		        <li>Test of de verbinding gelukt is, bijvoorbeeld door op dit element te (dubbel)klikken: <img src="./mbot_files/mblock-play-tone.png" style="vertical-align:middle"></li>
+		        <li>Je bent nu klaar om een programma te gaan schrijven!</li>
+			</ol>
 		</div>
 		
 		<div id="inputoutput">
@@ -70,15 +63,15 @@ $(document).ready(function(){
 	        <h3>Voelen (met de sensoren)</h3>
 	        De mBot heeft een aantal sensoren om z'n omgeving te voelen. 
 	        <ul>
-	            <li>Ultrasoon: dit zijn de twee 'ogen' voorop de mBot. De mBot gebruikt net als een vleermuis echo's om voorwerpen te 'zien'. Het ene oog stuurt een geluidje en het andere oog vangt de echo op.</li>
-	            <li>Lijnvolg: voor het voorwiel zitten twee sensoren die het verschil tussen licht en donker kunnen meten. Als de mBot over een lijn rijdt kan hij op deze manier zien of er een bocht aankomt.</li>
-	            <li>Licht: bovenop (onder het plastic kapje) zit een sensor die meet hoe licht het in de ruimte is.</li>
+	            <li><i>Ultrasoon</i>: dit zijn de twee 'ogen' voorop de mBot. De mBot gebruikt net als een vleermuis echo's om voorwerpen te 'zien'. Het ene oog stuurt een geluidje en het andere oog vangt de echo op.</li>
+	            <li><i>Lijnvolg</i>: voor het voorwiel zitten twee sensoren die het verschil tussen licht en donker kunnen meten. Als de mBot over een lijn rijdt kan hij op deze manier zien of er een bocht aankomt.</li>
+	            <li><i>Lichtsterkte</i>: bovenop (onder het plastic kapje) zit een sensor die meet hoe licht het in de ruimte is.</li>
 	        </ul>
 	        <h3>Doen (met de <i>actuatoren</i>)</h3>
 	        <ul>
-	            <li>Motoren: ieder wiel wordt met een aparte motor bestuurd.</li>
-	            <li>LEDs: bovenop (onder het plastic kapje) zitten twee LEDs die je elke kleur kunt maken die je wilt.</li>
-	            <li>Buzzer: ook onder het kapje zit een buzzer waarmee je de mBot verschillende hoogte tonen kunt laten maken.</li>
+	            <li><i>Motoren</i>: ieder wiel wordt met een aparte motor bestuurd.</li>
+	            <li><i>LEDs</i>: bovenop (onder het plastic kapje) zitten twee LEDs die je elke kleur kunt maken die je wilt.</li>
+	            <li><i>Buzzer</i>: ook onder het kapje zit een buzzer waarmee je de mBot verschillende hoogte tonen kunt laten maken.</li>
 	        </ul>
 		</div>    
 
@@ -89,67 +82,92 @@ $(document).ready(function(){
 			<h2>Opdrachten</h2>
 
 			<h4>Voorbeeldopdracht 1: een vierkant rijden</h4>
-		    
-		    1. De eerste stap is om de mBot een stuk vooruit te laten rijden. Let op: als je de snelheid onder ongeveer 75 instelt (dit hangt ook af van hoe vol de batterij is) zal de mBot vaak niet rijden maar hoor je alleen een zacht piepend geluid van de motor komen.
-		    <button id="1a"><span id="span1a">Laat de mBlock code zien</span></button><br>
-		    <div id="div1a" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant01.png">
-		    </div>
-		    2. Nu rijdt de mBot eindeloos door! Laat 'm dus weer stil staan.
-		    <button id="1b"><span id="span1b">Laat de mBlock code zien</span></button><br>
-		    <div id="div1b" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant02.png">
-		    </div>
-		    3. De opdracht om stil te gaan staan wordt meteen uitgevoerd na die om te gaan rijden. Wacht hier dus even mee.
-		    <button id="1c"><span id="span1c">Laat de mBlock code zien</span></button><br>
-		    <div id="div1c" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant03.png">
-		    </div>
-		    4. Laat nu de mBot een bocht maken.
-		    <button id="1d"><span id="span1d">Laat de mBlock code zien</span></button><br>
-		    <div id="div1d" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant04.png">
-		    </div>
-		    5. Je merkt dat de mBot nu de bocht om blijft gaan, probeer de tijd zo in te stellen dat ie rechtsaf (of linksaf) slaat.
-		    <button id="1e"><span id="span1e">Laat de mBlock code zien</span></button><br>
-		    <div id="div1e" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant05.png">
-		    </div>
-		    6. Dit stuk code wil je nu een aantal keer herhalen.
-		    <button id="1f"><span id="span1f">Laat de mBlock code zien</span></button><br>
-		    <div id="div1f" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_vierkant06.png">
-		    </div>
+		    <ol>
+				Aangezien de mBot bij dit programma moet rijden is het verstandig je programma naar de mBot te <i>uploaden</i> en het programma te starten als deze op de grond staat. Je kunt het programma laten starten bij het aanzetten van de mBot; in dit voorbeeld start het programma als de knop bovenop wordt ingedrukt.
+				<li>De eerste stap is om de mBot een stuk vooruit te laten rijden. 50% van het vermogen is prima om mee te beginnen. Start het programma door op het zwarte knopje bovenop de mBot te drukken.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_vierkant01.png"/>
+					</details>
+				</li>
+				<li>Nu rijdt de mBot eindeloos door! Zorg dus dat deze na een paar seconden weer stopt met rijden.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_vierkant02.png"/>
+					</details>
+				</li>
+				<li>Laat nu de mBot een bocht maken. Probeer de tijd zo in te stellen dat ie rechtsaf (of linksaf) slaat.					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_vierkant03.png"/>
+					</details>
+				</li>
+				<li>Dit stuk code wil je nu een aantal keer herhalen.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_vierkant04.png"/>
+					</details>
+				</li>
+		    </ol>
 		
 		    <p></p><h4>Voorbeeldopdracht 2: sensorwaarden laten zien</h4>
-		    Om opdrachten te kunnen programmeren is het soms handig om te weten wat de sensoren van de mBot meten. Hiervoor kun je de M-Panda inschakelen: deze kan je vertellen wat een sensor 'ziet'.
-		    <br>Kijk bijvoorbeeld wat de lichtsensor meet als je je hand bovenop de mBot houdt.
-		    <br>Let op 1: de LEDs op de mBot kunnen de lichtsensor be&iuml;nvloeden.
-		    <br>Let op 2: het is verstandig heel even te wachten tussen het uitlezen van de sensoren.
-		    <button id="2"><span id="span2">Laat de mBlock code zien</span></button><br>
-		    <div id="div2" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_leessensor_licht.png">
-		    </div>
+		    Om opdrachten te kunnen programmeren is het vaak handig om te weten wat de sensoren van de mBot meten. Om dit te kunnen zien moet je de gemeten waarde bewaren in een <i>variabele</i>. Kijk bijvoorbeeld wat de lichtsensor meet als je je hand bovenop de mBot houdt, of de ultrasoonsensor als je je hand heen en weer beweegt voor de mBot.
+			<ol>
+				<li>Maak eerst een variabele aan voor lichtsterkte en/of afstand. Je kunt zelf kiezen of andere sprites deze variabele ook mogen zien en gebruiken.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_leessensor_licht01.png"/>
+					</details>
+				</li>
+				<li>Wijs nu de waarde gemeten door de sensor toe aan deze variabele. Als je nu het programma uitvoert zie je dat linksboven in het scherm de gemeten waarde(n) getoond worden. "mBot:" voor lichtsterkte geeft aan dat deze variabele alleen voor de mBot beschikbaar is.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_leessensor_licht02.png"/>
+						<img src="./mbot_files/mBot_leessensor_licht03.png"/>
+					</details>
+				</li>
+				<li>De LEDs op de mBot kunnen be&iuml;nvloeden wat de lichtsensors meten, zet daarom eerst de LEDs uit.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_leessensor_licht04.png"/>
+					</details>
+				</li>
+				<li>Waarschijnlijk wil je de waarde(n) van de sensor(s) meer dan één keer bepalen. Herhaal daarom deze stap. Vaak is het ook verstandig een kleine pauze na iedere herhaling in te bouwen.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_leessensor_licht05.png"/>
+					</details>
+				</li>
+			</ol>
 		
 		    <p></p><h4>Voorbeeldopdracht 3: help, een muur!</h4>
 		    In deze opdracht is het de bedoeling om te voorkomen dat de mBot tegen de muur botst (nadat je 'm er wel naar toe laat rijden natuurlijk).<br>
-		    1. Laat de mBot rijden en hou in de gaten of hij al in de buurt van de muur is.
-		    <button id="3a"><span id="span3a">Laat de mBlock code zien</span></button><br>
-		    <div id="div3a" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_muurbots01_2.png">
-		    </div>
-		    2. Zorg dat de mBot weer stil gaat staan, en sla alarm om de bijna botsing wat kracht bij te zetten.
-		    <button id="3b"><span id="span3b">Laat de mBlock code zien</span></button><br>
-		    <div id="div3b" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_muurbots02_2.png">
-		    </div>
-		    3. Vaak zijn er meerdere manieren om hetzelfde resultaat te bereiken.
-		    <button id="3c"><span id="span3c">Laat de mBlock code zien</span></button><br>
-		    <div id="div3c" class="div_code" style="display: none;">
-		    <img src="./mbot_files/mBot_muurbots03_2.png">
-		    </div>
-		</div>    
-
+			<ol>
+				<li>Begin weer met de mBot te laten rijden na het indrukken van de knop.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_muurbots01.png"/>
+					</details>
+				</li>
+				<li>Maak nu een voorwaarde waarbij de mBot bij een afstand van minder dan 20 centimeter stopt met rijden.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_muurbots02.png"/>
+					</details>
+				</li>
+				<li>Gebeurt er nu wat je wil? Zo niet, denk dan eens na waarom niet? Heb je een stukje code vergeten?
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_muurbots03.png"/>
+					</details>
+				</li>
+				<li>Sla maar eens flink alarm met licht en geluid om duidelijk te maken dat de mBot bijna gebotst was! Natuurlijk kan dit op veel manieren, de voorbeeldcode is er daar één van.
+					<details>
+						<summary>mBlock code</summary>
+						<img src="./mbot_files/mBot_muurbots04.png"/>
+					</details>
+				</li>
+			</ol>
+		
 		<div id="uitdagingen">
 			<div class="terug">
 				<a title="terug naar inhoud" href="#inhoud"><i class="material-icons">arrow_upward</i></a>
@@ -161,14 +179,12 @@ $(document).ready(function(){
 		    Ga zelf aan de gang! Natuurlijk kun je zelf iets verzinnen voor de mBot, hier zijn wat idee&euml;n voor als je inspiratie nodig hebt:
 		    </p>
 		    <ul>
-		        <li>Een rondje rijden (uitdaging: achtje, spiraal)</li>
-		        <li>Licht- en geluidshow</li>
-		        <li>mBot moodlight</li>
+		        <li>Rijd een achtje (of extra moeilijk: een spiraal)</li>
 		        <li>Lichten aan in de tunnel</li>
-		        <li>Actie op het zebrapad</li>
-		        <li>Een lijn volgen</li>
-		        <li>Voorwerpen ontwijken</li>
-		        <li>Een voorwerp volgen</li>
+		        <li>Aan de slag als politieauto of ambulance</li>
+		        <li>Volg de lijn</li>
+		        <li>Ontwijk de voorwerpen</li>
+		        <li>Volg een voorwerp</li>
 		    </ul>
 		</div>    
 
