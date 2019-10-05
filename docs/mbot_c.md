@@ -29,7 +29,7 @@
 
 - Voor je de mBot aanzet: <b>de mBot eerst op de grond zetten of op de kop leggen!</b>
 - Hou rekening met de beperkte ruimte: laat het vermogen van de wielen eerst gewoon op 50% staan.
-
+s
 ## Arduino
 
 Als we met Arduino een programma schrijven dan hebben we altijd twee 'functies' die we altijd gebruiken, Arduino roept deze voor ons aan.
@@ -112,7 +112,9 @@ MeDCMotor motor1(PORT_1);
 void MeDCMotor::run(int16_t speed) //Draaien met een gegeven snelheid
 void MeDCMotor::stop(void) //Stoppen.	
 
-motor1.run(motorSpeed); /* value: between -255 and 255. */
+uint8_t motorSpeed = 100;
+
+motor1.run(motorSpeed); //Waarde tussen -255 en 255
 delay(2000);
 motor1.stop();
 delay(100);
@@ -179,6 +181,7 @@ Ook hebben we de code nodig van de mBot voor de Arduino IDE. Deze code is hier t
       - Board: Arduino Uno (/ Genuino Uno)
       - Poort: De correcte poort die je net hebt aangesloten
 - Test of de verbinding gelukt is door de volgende schets in te laden: 
+	```Arduino
 
 		#include <MeMCore.h>
 
@@ -206,6 +209,7 @@ Ook hebben we de code nodig van de mBot voor de Arduino IDE. Deze code is hier t
 			delay(500); //500 milliseconden wachten	
 		}
 
+	```
   - Nu kun je op upload klikken. (De knop linksboven, met het pijltje naar rechts)
 - Je bent nu klaar om een programma te gaan schrijven!
 
@@ -306,7 +310,7 @@ MeDCMotor motor1(PORT_1);
 void MeDCMotor::run(int16_t speed) //Draaien met een gegeven snelheid
 void MeDCMotor::stop(void) //Stoppen.	
 
-motor1.run(motorSpeed); /* value: between -255 and 255. */
+motor1.run(motorSpeed); /* Waarde: tussen -255 en 255. */
 delay(2000);
 motor1.stop();
 delay(100);
@@ -370,40 +374,200 @@ delay(1000);
 Aangezien de mBot bij dit programma moet rijden is het verstandig je programma naar de mBot te <i>uploaden</i> en het programma te starten als deze op de grond staat. Je kunt het programma laten starten bij het aanzetten van de mBot; in dit voorbeeld start het programma als de knop bovenop wordt ingedrukt.
 
 - De eerste stap is om de mBot een stuk vooruit te laten rijden. 50% van het vermogen is prima om mee te beginnen. Start het programma door op het zwarte knopje bovenop de mBot te drukken.
+  <details>
+	<summary>mBot arduino code</summary>
 
+	```Arduino
+
+	#include "MeMCore.h"
+
+	MeDCMotor motor1(PORT_1);
+
+	MeDCMotor motor2(PORT_2);
+
+	uint8_t motorSpeed = 100;
+
+	void setup()
+	{
+		pinMode(7, INPUT); //Define button pin as input
+		while (analogRead(7) > 100) { // While (Button is not pressed)
+			delay(50);
+		}
+	}
+
+	void loop()
+	{
+		motor1.run(motorSpeed);
+		motor2.run(motorSpeed);
+	}
+
+	```
+
+	</details>
 - Nu rijdt de mBot eindeloos door! Zorg dus dat deze na een paar seconden weer stopt met rijden.
 	<details>
-		<summary>mBot arduino code</summary>
+	<summary>mBot arduino code</summary>
+
+	```Arduino
+
+	#include "MeMCore.h"
+
+	MeDCMotor motor1(PORT_1);
+
+	MeDCMotor motor2(PORT_2);
+
+	uint8_t motorSpeed = 100;
+
+	void setup()
+	{
+		pinMode(7, INPUT); //Define button pin as input
+		while (analogRead(7) > 100) { // While (Button is not pressed)
+			delay(50);
+		}
+
+	}
+
+	void loop()
+	{
+		motor1.run(motorSpeed);
+		motor2.run(motorSpeed);
+		delay(2000);
+		motor1.stop();
+		motor2.stop();
+	}
+
+	```
+
 	</details>
 
 - Laat nu de mBot een bocht maken. Probeer de tijd zo in te stellen dat ie rechtsaf (of linksaf) slaat.					<details>
-		<summary>mBot arduino code</summary>
+	<summary>mBot arduino code</summary>
+
+	```Arduino
+
+	#include "MeMCore.h"
+
+	MeDCMotor motor1(PORT_1);
+
+	MeDCMotor motor2(PORT_2);
+
+	uint8_t motorSpeed = 100;
+
+	void setup()
+	{
+		pinMode(7, INPUT); //Define button pin as input
+		while (analogRead(7) > 100) { // While (Button is not pressed)
+			delay(50);
+		}
+	}
+
+	void loop()
+	{
+		motor1.run(motorSpeed);
+		motor2.run(motorSpeed);
+		delay(2000);
+		motor1.run(0);
+		motor2.run(motorSpeed);
+		delay(2000);
+		motor1.run(motorSpeed);
+		motor2.run(motorSpeed);
+		delay(2000);
+		motor1.stop();
+		motor2.stop();
+
+		while(true){
+			delay(1000);
+		}
+	}
+
+	```
+
 	</details>
 
-- Dit stuk code wil je nu een aantal keer herhalen.
-	<details>
-		<summary>mBot arduino code</summary>
-	</details>
+- Kan de robot nu een vierkantje rijden?
+
 
 ### 2. Sensorwaarden laten zien
 
 Om opdrachten te kunnen programmeren is het vaak handig om te weten wat de sensoren van de mBot meten. Om dit te kunnen zien moet je de gemeten waarde bewaren in een <i>variabele</i>. Kijk bijvoorbeeld wat de lichtsensor meet als je je hand bovenop de mBot houdt, of de ultrasoonsensor als je je hand heen en weer beweegt voor de mBot.
 
 
-- functie vinden voor lichtsterkee uitlezen
-- variabele voor waarde opslaan
-- Lees waarde uit met serial monitor
-- Misschien ook met serial plotter :D
-- Vaker uitlezen.. maak een loopje
-- Zullen we een geluidje maken als de lichtsterkte te hoog (Of laag is?)?
+- Wat is de functie ook al weer om de lichtsterkte uit te meten? Weet jij het nog?
+   <details>
+	<summary>mBot arduino code</summary>
+
+	```Arduino
+
+	#include "MeMCore.h"
+	MeLightSensor lightSensor(PORT_6);
+
+	void setup()
+	{
+		Serial.begin(9600);
+	}
+
+	void loop()
+	{
+		int16_t waarde = lightSensor.read();
+		Serial.print("waarde = ");
+		Serial.println(waarde);
+		delay(100);
+	}
+
+	```
+
+	</details>
+- Deze waarde wordt nu door de mBot naar de computer gestuurt. Dit kunnen wij lezen in de seriele monitor. Wat zie jij nu in de seriele monitor?
+- De Arduino IDE heeft ook een seriele plotter. Wat is hier het verschil?
+- Zullen we een geluidje maken als de lichtsterkte te hoog (Of laag is?)? (Hint, buzzer!)
 
 ### 3. Help, een muur!
 In deze opdracht is het de bedoeling om te voorkomen dat de mBot tegen de muur botst (nadat je 'm er wel naar toe laat rijden natuurlijk).
 
 - Laat de mBot rijden met een druk op de knop
 - Zorg ervoor dat de mBot stopt met rijden als hij minder dan 20 centimeter van een muur is.
+  <details>
+	<summary>mBot arduino code</summary>
+
+	```Arduino
+
+	#include "MeMCore.h"
+
+	MeDCMotor motor1(PORT_1);
+
+	MeUltrasonicSensor ultraSensor(PORT_7);
+
+	MeDCMotor motor2(PORT_2);
+
+	uint8_t motorSpeed = 100;
+
+	void setup()
+	{
+		pinMode(7, INPUT); //Define button pin as input
+		while (analogRead(7) > 100) { // While (Button is not pressed)
+			delay(50);
+		}
+
+	}
+
+	void loop()
+	{
+		double afstandTotObject = ultraSensor.distanceCm();
+		
+		if(afstandTotObject < 20) {
+			motor1.stop();
+			motor2.stop();
+		} else {
+			motor1.run(motorSpeed);
+			motor2.run(motorSpeed);
+		}
+	}
+
+	```
+
+	</details>
 - Gebeurt er nu wat je wil? Zo niet, denk dan eens na waarom niet? Heb je een stukje code vergeten?
-- Sla maar eens flink alarm met licht en geluid om duidelijk te maken dat de mBot bijna gebotst was! Natuurlijk kan dit op veel manieren, de voorbeeldcode is er daar één van.
+- Sla maar eens flink alarm met licht en geluid om duidelijk te maken dat de mBot bijna gebotst was! Natuurlijk kan dit op veel manieren, doe iets geks!
 
 
 ## Uitdagingen
