@@ -107,7 +107,7 @@ switch(sensorState)
 
 //Motoren
 
-MeDCMotor motor1(PORT_1);
+MeDCMotor motor1(M1);
 
 void MeDCMotor::run(int16_t speed) //Draaien met een gegeven snelheid
 void MeDCMotor::stop(void) //Stoppen.	
@@ -305,7 +305,7 @@ Ieder wiel wordt met een aaprte motor bestuurd.
 
 //Motoren
 
-MeDCMotor motor1(PORT_1);
+MeDCMotor motor1(M1);
 
 void MeDCMotor::run(int16_t speed) //Draaien met een gegeven snelheid
 void MeDCMotor::stop(void) //Stoppen.	
@@ -381,9 +381,9 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	#include "MeMCore.h"
 
-	MeDCMotor motor1(PORT_1);
+	MeDCMotor motor1(M1);
 
-	MeDCMotor motor2(PORT_2);
+	MeDCMotor motor2(M2);
 
 	uint8_t motorSpeed = 100;
 
@@ -397,7 +397,7 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	void loop()
 	{
-		motor1.run(motorSpeed);
+		motor1.run(-motorSpeed);
 		motor2.run(motorSpeed);
 	}
 
@@ -412,9 +412,9 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	#include "MeMCore.h"
 
-	MeDCMotor motor1(PORT_1);
+	MeDCMotor motor1(M1);
 
-	MeDCMotor motor2(PORT_2);
+	MeDCMotor motor2(M2);
 
 	uint8_t motorSpeed = 100;
 
@@ -429,7 +429,7 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	void loop()
 	{
-		motor1.run(motorSpeed);
+		motor1.run(-motorSpeed);
 		motor2.run(motorSpeed);
 		delay(2000);
 		motor1.stop();
@@ -447,11 +447,11 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	#include "MeMCore.h"
 
-	MeDCMotor motor1(PORT_1);
+	MeDCMotor motor1(M1);
 
-	MeDCMotor motor2(PORT_2);
+	MeDCMotor motor2(M2);
 
-	uint8_t motorSpeed = 100;
+	uint8_t motorSpeed = 100;	
 
 	void setup()
 	{
@@ -463,13 +463,13 @@ Aangezien de mBot bij dit programma moet rijden is het verstandig je programma n
 
 	void loop()
 	{
-		motor1.run(motorSpeed);
+		motor1.run(-motorSpeed);
 		motor2.run(motorSpeed);
 		delay(2000);
 		motor1.run(0);
 		motor2.run(motorSpeed);
 		delay(2000);
-		motor1.run(motorSpeed);
+		motor1.run(-motorSpeed);
 		motor2.run(motorSpeed);
 		delay(2000);
 		motor1.stop();
@@ -533,11 +533,11 @@ In deze opdracht is het de bedoeling om te voorkomen dat de mBot tegen de muur b
 
 	#include "MeMCore.h"
 
-	MeDCMotor motor1(PORT_1);
+	MeDCMotor motor1(M1);
 
 	MeUltrasonicSensor ultraSensor(PORT_7);
 
-	MeDCMotor motor2(PORT_2);
+	MeDCMotor motor2(M2);
 
 	uint8_t motorSpeed = 100;
 
@@ -558,7 +558,7 @@ In deze opdracht is het de bedoeling om te voorkomen dat de mBot tegen de muur b
 			motor1.stop();
 			motor2.stop();
 		} else {
-			motor1.run(motorSpeed);
+			motor1.run(-motorSpeed);
 			motor2.run(motorSpeed);
 		}
 	}
@@ -579,6 +579,6 @@ steeds moeilijker.
 - Lichten aan in de tunnel
 - Aan de slag als politieauto of ambulance
 - Volg de lijn
-- Ontwijk de voorwerpen (Rijd er omheen?)
+- Ontwijk de voorwerpen (Rijd er omheen? )
 - Volg een voorwerp
 
