@@ -4,7 +4,6 @@ date: 2020-08-29T21:46:07+02:00
 draft: false
 toc: true
 headercolor: "teal-background"
-taal: Scratch
 ---
 
 ## Introductie

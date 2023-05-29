@@ -4,6 +4,7 @@ date: 2020-08-29T21:18:58+02:00
 draft: false
 toc: true
 headercolor: "teal-background"
+onderwerp: bot
 ---
 
 We gaan werken met programmeeromgeving mBlock.
